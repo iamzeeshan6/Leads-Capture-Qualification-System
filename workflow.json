@@ -1,0 +1,593 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1-Nl0B3FnDrLfqwGC_Ag4QVnE_4DN-_Vnuec_ZlTy_O4",
+          "mode": "list",
+          "cachedResultName": "RealEstate-QualifierLeads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-Nl0B3FnDrLfqwGC_Ag4QVnE_4DN-_Vnuec_ZlTy_O4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-Nl0B3FnDrLfqwGC_Ag4QVnE_4DN-_Vnuec_ZlTy_O4/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json['What is your name?'] }}",
+            "Email": "={{ $json['What is your email?'] }}",
+            "Phone Number": "={{ $json['What is your Phone number?'] }}",
+            "When are you looking to buy?": "={{ $json['When are you looking to buy?'] }}",
+            "What is your budget (in USD)?": "={{ $json['What is your budget (in USD)?'] }}",
+            "Are you ore approved for Mortage?": "={{ $json['Are you approved for Mortage?'] }}",
+            "Status": "new",
+            "submittedAt": "={{ new Date().toISOString() }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Phone Number",
+              "displayName": "Phone Number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "When are you looking to buy?",
+              "displayName": "When are you looking to buy?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "What is your budget (in USD)?",
+              "displayName": "What is your budget (in USD)?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Are you ore approved for Mortage?",
+              "displayName": "Are you ore approved for Mortage?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "submittedAt",
+              "displayName": "submittedAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [
+        -512,
+        176
+      ],
+      "name": "Append Main Sheet",
+      "id": "7e264910-d067-42d5-8865-b523defecc8b",
+      "typeVersion": 4.7,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "p5bbUgCmncwupeyz",
+          "name": "Google Sheets account 4"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "4b2fac82-deae-4bd6-bca4-1ce68d4b46aa",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "position": [
+        -272,
+        176
+      ],
+      "name": "Check Qualification",
+      "id": "d656a738-9a29-4667-8173-186ddd30e9b7",
+      "typeVersion": 2.3
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "name": "Status",
+              "value": "NOT QUALIFIED"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "position": [
+        -48,
+        288
+      ],
+      "name": "Set Not Qualified",
+      "id": "7c8948fc-af1d-48d4-8fd4-1b0d943895af",
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1J2Orph8g08fO01qC-DLXv2lzulbm8G3u0zRFSgHeHO0",
+          "mode": "list",
+          "cachedResultName": "Qualified Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1J2Orph8g08fO01qC-DLXv2lzulbm8G3u0zRFSgHeHO0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1J2Orph8g08fO01qC-DLXv2lzulbm8G3u0zRFSgHeHO0/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $('Typeform Trigger').item.json['What is your name?'] }}",
+            "Email": "={{ $('Typeform Trigger').item.json['What is your email?'] }}",
+            "Phone Number": "={{ $('Typeform Trigger').item.json['What is your Phone number?'] }}",
+            "When are you looking to buy?": "={{ $('Typeform Trigger').item.json['When are you looking to buy?'] }}",
+            "What is your budget (in USD)?": "={{ $('Typeform Trigger').item.json['What is your budget (in USD)?'] }}",
+            "Are you ore approved for Mortage?": "={{ $('Typeform Trigger').item.json['Are you approved for Mortage?'] }}",
+            "Email Sent?": "Yes"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Phone Number",
+              "displayName": "Phone Number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "When are you looking to buy?",
+              "displayName": "When are you looking to buy?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "What is your budget (in USD)?",
+              "displayName": "What is your budget (in USD)?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Are you ore approved for Mortage?",
+              "displayName": "Are you ore approved for Mortage?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email Sent?",
+              "displayName": "Email Sent?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [
+        128,
+        0
+      ],
+      "name": "Add Qualified Leads",
+      "id": "b600c379-422d-43e3-9eb0-b912fef0be2e",
+      "typeVersion": 4.7,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "p5bbUgCmncwupeyz",
+          "name": "Google Sheets account 4"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "khawajahamza566@gmail.com",
+        "toEmail": "={{ $('Typeform Trigger').item.json['What is your email?'] }}",
+        "subject": "You are Qualified 🎉",
+        "html": "=<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\">\n</head>\n<body style=\"margin:0; padding:0; background-color:#f4f6f8; font-family: Arial, sans-serif;\">\n\n  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color:#f4f6f8; padding:20px;\">\n    <tr>\n      <td align=\"center\">\n\n        <!-- Main Container -->\n        <table width=\"600\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#ffffff; border-radius:10px; overflow:hidden;\">\n\n          <!-- Header -->\n          <tr>\n            <td style=\"background:linear-gradient(90deg,#4f46e5,#06b6d4); color:white; padding:20px; text-align:center;\">\n              <h2 style=\"margin:0;\">You're Qualified 🎉</h2>\n            </td>\n          </tr>\n\n          <!-- Greeting -->\n          <tr>\n            <td style=\"padding:20px; color:#333;\">\n              <p style=\"font-size:16px; margin:0;\">\n                Hi <strong>{{ $json.Name }}</strong>,\n              </p>\n\n              <p style=\"margin-top:10px; font-size:15px; line-height:1.6;\">\n                Congratulations! 🎉 You’ve been successfully <strong>qualified</strong> based on your submission.\n              </p>\n\n              <p style=\"font-size:15px; line-height:1.6;\">\n                Thank you for taking the time to fill out the form. We truly appreciate your interest and look forward to helping you find the perfect opportunity.\n              </p>\n            </td>\n          </tr>\n\n          <!-- Profile Summary Title -->\n          <tr>\n            <td style=\"padding:0 20px;\">\n              <h3 style=\"margin-bottom:10px; color:#111;\">Your Profile Summary</h3>\n            </td>\n          </tr>\n\n          <!-- Cards Section -->\n          <tr>\n            <td style=\"padding:10px 20px 20px 20px;\">\n\n              <!-- Name Card -->\n              <table width=\"100%\" cellpadding=\"10\" cellspacing=\"0\" style=\"margin-bottom:10px; border-left:5px solid #4f46e5; background:#f9fafb; border-radius:6px;\">\n                <tr>\n                  <td>\n                    <strong>Name:</strong><br>\n                    {{ $json.Name }}\n                  </td>\n                </tr>\n              </table>\n\n              <!-- Email Card -->\n              <table width=\"100%\" cellpadding=\"10\" cellspacing=\"0\" style=\"margin-bottom:10px; border-left:5px solid #06b6d4; background:#f9fafb; border-radius:6px;\">\n                <tr>\n                  <td>\n                    <strong>Email:</strong><br>\n                  {{ $json.Email }}\n                  </td>\n                </tr>\n              </table>\n\n              <!-- Budget Card -->\n              <table width=\"100%\" cellpadding=\"10\" cellspacing=\"0\" style=\"margin-bottom:10px; border-left:5px solid #10b981; background:#f9fafb; border-radius:6px;\">\n                <tr>\n                  <td>\n                    <strong>Budget:</strong><br>\n                    {{ $json['What is your budget (in USD)?'] }}\n                  </td>\n                </tr>\n              </table>\n\n              <!-- Timeline Card -->\n              <table width=\"100%\" cellpadding=\"10\" cellspacing=\"0\" style=\"border-left:5px solid #f59e0b; background:#f9fafb; border-radius:6px;\">\n                <tr>\n                  <td>\n                    <strong>Timeline:</strong><br>\n                {{ $json['When are you looking to buy?'] }}\n                  </td>\n                </tr>\n              </table>\n\n            </td>\n          </tr>\n\n          <!-- Footer -->\n          <tr>\n            <td style=\"padding:20px; text-align:center; font-size:13px; color:#777;\">\n              We’ll be reaching out to you shortly with the next steps.<br><br>\n              Best regards,<br>\n              <strong>Ghulam Hamza</strong>\n            </td>\n          </tr>\n\n        </table>\n\n      </td>\n    </tr>\n  </table>\n\n</body>\n</html>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "position": [
+        336,
+        0
+      ],
+      "name": "Send Email",
+      "id": "10ddd457-5860-4911-a97e-2a57b2afe2d0",
+      "typeVersion": 2.1,
+      "webhookId": "ac01742f-842f-42a7-a182-86b9ac2a37f4",
+      "credentials": {
+        "smtp": {
+          "id": "0NIpC8ghzpT5BN7o",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1-Nl0B3FnDrLfqwGC_Ag4QVnE_4DN-_Vnuec_ZlTy_O4",
+          "mode": "list",
+          "cachedResultName": "RealEstate-QualifierLeads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-Nl0B3FnDrLfqwGC_Ag4QVnE_4DN-_Vnuec_ZlTy_O4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-Nl0B3FnDrLfqwGC_Ag4QVnE_4DN-_Vnuec_ZlTy_O4/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $('Typeform Trigger').item.json['What is your name?'] }}",
+            "Email": "={{ $('Typeform Trigger').item.json['What is your email?'] }}",
+            "Phone Number": "={{ $('Typeform Trigger').item.json['What is your Phone number?'] }}",
+            "When are you looking to buy?": "={{ $('Typeform Trigger').item.json['When are you looking to buy?'] }}",
+            "What is your budget (in USD)?": "={{ $('Typeform Trigger').item.json['What is your budget (in USD)?'] }}",
+            "Are you ore approved for Mortage?": "={{ $('Typeform Trigger').item.json['Are you approved for Mortage?'] }}",
+            "Status": "={{ $('Set Qualified').item.json.Status }}",
+            "submittedAt": "={{ new Date().toISOString() }}"
+          },
+          "matchingColumns": [
+            "Phone Number"
+          ],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Phone Number",
+              "displayName": "Phone Number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "When are you looking to buy?",
+              "displayName": "When are you looking to buy?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "What is your budget (in USD)?",
+              "displayName": "What is your budget (in USD)?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Are you ore approved for Mortage?",
+              "displayName": "Are you ore approved for Mortage?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "submittedAt",
+              "displayName": "submittedAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [
+        512,
+        176
+      ],
+      "name": "Update Status",
+      "id": "7ca9e5e6-8267-40ee-8025-8cf35218f834",
+      "typeVersion": 4.7,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "p5bbUgCmncwupeyz",
+          "name": "Google Sheets account 4"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "formId": "z3aNMje7"
+      },
+      "type": "n8n-nodes-base.typeformTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -768,
+        176
+      ],
+      "id": "7c0583c8-ede9-4d6e-8e95-d760bcc2c0cc",
+      "name": "Typeform Trigger",
+      "webhookId": "da0b53bb-baeb-4d5a-808b-5cd8dab3f62b",
+      "credentials": {
+        "typeformApi": {
+          "id": "Ffpy3bVCY01dbdFM",
+          "name": "Typeform account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ec8ffa1b-6a11-485a-99ae-c1b1a1430c78",
+              "name": "Status",
+              "value": "QUALIFIED",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -64,
+        0
+      ],
+      "id": "f68a7e8a-913e-4814-9841-9bd5ca72fb0f",
+      "name": "Set Qualified"
+    }
+  ],
+  "connections": {
+    "Append Main Sheet": {
+      "main": [
+        [
+          {
+            "node": "Check Qualification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Qualification": {
+      "main": [
+        [
+          {
+            "node": "Set Qualified",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set Not Qualified",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Not Qualified": {
+      "main": [
+        [
+          {
+            "node": "Update Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Qualified Leads": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email": {
+      "main": [
+        [
+          {
+            "node": "Update Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Typeform Trigger": {
+      "main": [
+        [
+          {
+            "node": "Append Main Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Qualified": {
+      "main": [
+        [
+          {
+            "node": "Add Qualified Leads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "6fe168f033e50cdabc808c7e9fbf0b9484d1749300fad4a5137cfae038345ed5"
+  }
+}
